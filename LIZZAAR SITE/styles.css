@@ -8,7 +8,7 @@ styles.css
 .site-bg{
   position: fixed;
   inset: 0;
-  background: url('assets/lizzaar.logo.png') center/cover no-repeat;
+  background: url('assets/logo.jpg') center/cover no-repeat;
   filter: contrast(0.95) saturate(1.05);
   z-index: -2;
 }
@@ -19,5 +19,6 @@ styles.css
   background: rgba(0,0,0,0.45);
   z-index: -1;
 }
+
 
 
