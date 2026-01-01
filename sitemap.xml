@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lizzaar.com/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/bio</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/bio"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/bio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/bio"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/bio"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/fotos</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/fotos"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/fotos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/fotos"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/fotos"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/videos</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/videos"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/videos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/videos"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/videos"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/muziek</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/muziek"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/muziek"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/muziek"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/muziek"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/news</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/news"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/news"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/news"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/news"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/booking</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/booking"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/booking"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/booking"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/booking"/>
+  </url>
+  <url>
+    <loc>https://lizzaar.com/contact</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizzaar.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="nl-be" href="https://lizzaar.be/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lizaar.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://lizaar.be/contact"/>
+  </url>
