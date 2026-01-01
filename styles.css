@@ -21,5 +21,10 @@ opacity: 1; /* <-- ZICHTBAARHEID AANGEPAST */
 .hero__content {
   margin-top: 250px; /* Experimenteer met dit getal! */
 }
-
+.hero__tagline {
+  font-size: 24px;
+  font-style: italic;
+  color: #cccccc;
+  text-align: center;
+}
 
