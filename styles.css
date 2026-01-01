@@ -18,6 +18,9 @@ height: 100vh;
 z-index: -1;    
 opacity: 1; /* <-- ZICHTBAARHEID AANGEPAST */
 }
-
+.hero__content {
+  margin-top: 250px; /* Experimenteer met dit getal! */
+}
+```
 
 
