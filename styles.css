@@ -5,20 +5,19 @@ styles.css
 
 
 
-    .site-bg {
-      background-image: url('LIZZAAR logo.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      opacity: 0.1; /* Start met een lage opacity */
-    }
-    ```
+.site-bg {
+background-image: url('assets/LIZZAAR\ logo.png'); /* <-- PAD EN BESTANDSNAAM AANGEPAST */    
+background-size: cover;
+background-position: center;    
+background-repeat: no-repeat;    
+position: fixed;    
+top: 0;    
+left: 0;    
+width: 100vw;    
+height: 100vh;    
+z-index: -1;    
+opacity: 1; /* <-- ZICHTBAARHEID AANGEPAST */
+}
 
 
 
