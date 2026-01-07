@@ -15,15 +15,20 @@
     .bg-layer { background-image: url('assets/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
   </style>
 </head>
-<body class="site-bg">
+<script>
+  const v = document.getElementById('hero');
+  if (v) {
+ v.muted = true;
+ v.play().catch(err => console.log('Autoplay failed:', err));
+ v.addEventListener('playing', () => v.removeAttribute('poster'));
+  }
+  </script>
+  <body class="site-bg">
   <div class="bg-layer" aria-hidden="true"></div>
 
   <div id="intro-overlay" aria-hidden="false">
-    <video id="intro-video"
-           src="assets/intro.mp4"
-           playsinline autoplay muted preload="auto"
-           poster="assets/logo.png">
-      Jouw browser ondersteunt geen video.
+    <video id="hero" src="assets/Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay loop preload="auto" controls>
+        
     </video>
   </div>
 
