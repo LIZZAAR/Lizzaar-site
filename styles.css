@@ -27,4 +27,9 @@ opacity: 1; /* <-- ZICHTBAARHEID AANGEPAST */
   color: #cccccc;
   text-align: center;
 }
-
+@media (max-width: 768px) {
+  .bg-layer {
+    background-size: contain; /* Zorgt ervoor dat de afbeelding volledig zichtbaar is */
+    opacity: 0.2; /* Pas de zichtbaarheid aan indien nodig */
+  }
+}
