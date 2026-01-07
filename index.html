@@ -15,14 +15,6 @@
     .bg-layer { background-image: url('assets/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
   </style>
 </head>
-<script>
-  const v = document.getElementById('hero');
-  if (v) {
- v.muted = true;
- v.play().catch(err => console.log('Autoplay failed:', err));
- v.addEventListener('playing', () => v.removeAttribute('poster'));
-  }
-  </script>
   <body class="site-bg">
   <div class="bg-layer" aria-hidden="true"></div>
 
@@ -63,26 +55,49 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
+
   <script>
     (function(){
+      // Elementen correct selecteren
       const overlay = document.getElementById('intro-overlay');
-      const video = document.getElementById('intro-video');
+      const video = document.getElementById('hero'); // <-- ID is nu correct
       const logo = document.getElementById('logo');
       const content = document.getElementById('site-content');
 
-      function finish() {
+      // Functie om de intro af te sluiten
+      function finishIntro() {
         overlay.style.display = 'none';
         overlay.setAttribute('aria-hidden','true');
-        logo.style.display = '';
+        logo.style.display = 'block'; // Gebruik 'block' of '' om het weer te geven
         logo.setAttribute('aria-hidden','false');
         content.style.visibility = 'visible';
       }
 
-      video.addEventListener('ended', finish);
-      setTimeout(finish, 8500);
-      video.play().catch(() => finish());
+      // Controleer of de video bestaat
+      if (video) {
+        // Zorg dat de video gemute is voor autoplay
+        video.muted = true;
+
+        // Koppel de 'finish' functie aan het einde van de video
+        video.addEventListener('ended', finishIntro);
+
+        // Probeer de video af te spelen
+        video.play().catch(error => {
+          console.error("Autoplay is mislukt:", error);
+          // Als afspelen niet lukt (bijv. door browser policy), sluit de intro direct
+          finishIntro();
+        });
+
+        // Fallback: als er iets misgaat, sluit de intro na 8.5 seconden
+        setTimeout(finishIntro, 8500);
+
+      } else {
+        // Als de video om een of andere reden niet gevonden wordt, sluit de intro meteen.
+        finishIntro();
+      }
     })();
 
+    // Jaartal voor de footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
