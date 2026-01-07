@@ -13,7 +13,17 @@
     #logo img { width:120px; height:auto; }
     #site-content { visibility:hidden; }
     .bg-layer { background-image: url('assets/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
-  </style>
+    
+  .site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Optioneel, voor betere leesbaarheid */
+  z-index: 100;
+}</style>
 </head>
   <body class="site-bg">
   <div class="bg-layer" aria-hidden="true"></div>
@@ -68,8 +78,6 @@
       function finishIntro() {
         overlay.style.display = 'none';
         overlay.setAttribute('aria-hidden','true');
-        logo.style.display = 'block'; // Gebruik 'block' of '' om het weer te geven
-        logo.setAttribute('aria-hidden','false');
         content.style.visibility = 'visible';
       }
 
