@@ -29,6 +29,7 @@ opacity: 1; /* <-- ZICHTBAARHEID AANGEPAST */
 }
 @media (max-width: 768px) {
   .bg-layer {
+    background-image: url('assets/logo.png');
     background-size: contain; /* Zorgt ervoor dat de afbeelding volledig zichtbaar is */
     opacity: 0.2; /* Pas de zichtbaarheid aan indien nodig */
   }
