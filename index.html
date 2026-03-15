@@ -7,7 +7,8 @@
   <meta name="description" content="LIZZAAR — industrial metal. Muziek, video, foto’s, news en booking." />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    #intro-overlay { position: fixed; inset: 0; background:#000; display:flex; align-items:center; justify-content:center; z-index:9999; }
+    #intro-overlay { position: fixed; inset: 0; background:#000; display:flex; align-items:center; justify-content:center; z-index:9999; transition: opacity 0.5s ease-out; }
+    #intro-overlay.hidden { opacity: 0; pointer-events: none; }
     #intro-overlay video { width:100%; height:100%; object-fit:cover; }
     #logo { display:none; position:fixed; top:20px; left:20px; z-index:9998; }
     #logo img { width:120px; height:auto; }
@@ -20,7 +21,7 @@
   <div class="bg-layer" aria-hidden="true"></div>
 
   <div id="intro-overlay" aria-hidden="false">
-    <video id="hero" src="Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay preload="auto"></video>
+    <video id="hero-video" src="Intro.mp4" playsinline muted autoplay preload="auto"></video>
   </div>
 
   <div id="logo" aria-hidden="true">
@@ -46,6 +47,13 @@
   </header>
 
   <main id="site-content">
+    <!-- Alle secties zijn hersteld -->
+    <section id="hero" class="section" style="height: 100vh;"></section>
+    <section id="bio" class="section"><div class="container"><h2>Bio</h2><p>Bio content hier...</p></div></section>
+    <section id="photos" class="section"><div class="container"><h2>Foto's</h2><p>Foto content hier...</p></div></section>
+    <section id="videos" class="section"><div class="container"><h2>Video's</h2><p>Video content hier...</p></div></section>
+    
+    <!-- Muziek sectie staat nu op de juiste plek -->
     <section id="music" class="section">
         <div class="container">
             <h2>Muziek</h2>
@@ -66,6 +74,10 @@
             </div>
         </div>
     </section>
+
+    <section id="news" class="section"><div class="container"><h2>News</h2><p>Nieuws content hier...</p></div></section>
+    <section id="booking" class="section"><div class="container"><h2>Booking</h2><p>Booking content hier...</p></div></section>
+    <section id="contact" class="section"><div class="container"><h2>Contact</h2><p>Contact content hier...</p></div></section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -73,34 +85,50 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
-  <!-- ENKEL DIT SCRIPT IS NODIG -->
+  <!-- STABIEL SCRIPT DAT WERKT NADAT DE PAGINA GELADEN IS -->
   <script>
-    (function(){
+    document.addEventListener('DOMContentLoaded', function() {
       const overlay = document.getElementById('intro-overlay');
-      const video = document.getElementById('hero');
+      const video = document.getElementById('hero-video');
       const logo = document.getElementById('logo');
       const content = document.getElementById('site-content');
 
-      function finish() {
-        if (overlay) overlay.style.display = 'none';
-        if (logo) logo.style.display = '';
+      function finishIntro() {
+        if (!overlay) return;
+        overlay.classList.add('hidden');
+        
+        if (logo) logo.style.display = 'block';
         if (content) content.style.visibility = 'visible';
+
+        // Verwijder de overlay na de animatie
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 500);
       }
 
       if (video) {
-        video.addEventListener('ended', finish);
-        setTimeout(finish, 8500); // Failsafe timer
-        video.play().catch(() => finish());
+        // Start de video en wacht tot hij eindigt
+        video.play().then(() => {
+          video.addEventListener('ended', finishIntro);
+        }).catch(() => {
+          // Als autoplay faalt, verberg de intro meteen
+          finishIntro();
+        });
+        
+        // Extra failsafe timer
+        setTimeout(finishIntro, 8500);
       } else {
-        finish(); // Als er geen video is, toon de site meteen
+        // Als er geen video is, toon de site meteen
+        finishIntro();
       }
-    })();
 
-    const yearEl = document.getElementById('year');
-    if (yearEl) {
-      yearEl.textContent = new Date().getFullYear();
-    }
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    });
   </script>
-
+  
+  <script src="main.js"></script>
 </body>
 </html>
