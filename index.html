@@ -20,13 +20,10 @@
   <div class="bg-layer" aria-hidden="true"></div>
 
   <div id="intro-overlay" aria-hidden="false">
-    <!-- PAD GECORRIGEERD: Intro.mp4 staat in de hoofdmap -->
-    <video id="hero" src="Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay preload="auto">
-    </video>
+    <video id="hero" src="Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay preload="auto"></video>
   </div>
 
   <div id="logo" aria-hidden="true">
-    <!-- BESTANDSNAAM GECORRIGEERD: Het heet 'LIZZAAR logo.png' -->
     <img src="LIZZAAR logo.png" alt="Lizzaar logo">
   </div>
 
@@ -49,35 +46,26 @@
   </header>
 
   <main id="site-content">
-   <!-- =================== MUZIEK SECTIE =================== -->
     <section id="music" class="section">
         <div class="container">
             <h2>Muziek</h2>
             <p class="section-lead">Hieronder kun je onze laatste nummers beluisteren.</p>
-
-            <!-- Speler 1: Min Eigen Ding -->
             <div class="music-track">
                 <h4>LIZZAAR - Min Eigen Ding</h4>
-                <!-- PAD GECORRIGEERD: Hoofdletter 'A' in Audio -->
                 <audio controls style="width: 100%;">
                   <source src="assets/Audio/MinEigenDing.mp3" type="audio/mpeg">
                   Je browser ondersteunt de audiospeler niet.
                 </audio>
             </div>
-
-            <!-- Speler 2: WienAterDaGepeisd -->
             <div class="music-track">
                 <h4>LIZZAAR - WienAterDaGepeisd</h4>
-                <!-- PAD GECORRIGEERD: Hoofdletter 'A' in Audio -->
                 <audio controls style="width: 100%;">
                   <source src="assets/Audio/WienAterDagepeisd.mp3" type="audio/mpeg">
                   Je browser ondersteunt de audiospeler niet.
                 </audio>
             </div>
-
         </div>
     </section>
-    <!-- =================== EINDE MUZIEK SECTIE =================== --> 
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -85,7 +73,7 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
-  <!-- VOLLEDIG GECORRIGEERD SCRIPT -->
+  <!-- ENKEL DIT SCRIPT IS NODIG -->
   <script>
     (function(){
       const overlay = document.getElementById('intro-overlay');
@@ -101,11 +89,11 @@
 
       if (video) {
         video.addEventListener('ended', finish);
+        setTimeout(finish, 8500); // Failsafe timer
         video.play().catch(() => finish());
       } else {
-        finish();
+        finish(); // Als er geen video is, toon de site meteen
       }
-      setTimeout(finish, 8500);
     })();
 
     const yearEl = document.getElementById('year');
@@ -114,6 +102,5 @@
     }
   </script>
 
-  <script src="main.js"></script>
 </body>
 </html>
