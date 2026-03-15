@@ -46,38 +46,46 @@
     </nav>
   </header>
 
+  <!-- We herstellen de volledige pagina-inhoud -->
   <main id="site-content">
-    <!-- Alle secties zijn hersteld -->
-    <section id="hero" class="section" style="height: 100vh;"></section>
-    <section id="bio" class="section"><div class="container"><h2>Bio</h2><p>Bio content hier...</p></div></section>
-    <section id="photos" class="section"><div class="container"><h2>Foto's</h2><p>Foto content hier...</p></div></section>
-    <section id="videos" class="section"><div class="container"><h2>Video's</h2><p>Video content hier...</p></div></section>
-    
-    <!-- Muziek sectie staat nu op de juiste plek -->
+    <section id="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+      <!-- Hero content (bv. groot logo of titel) kan hier -->
+    </section>
+    <section id="bio" class="section">
+      <div class="container"><h2>Bio</h2><!-- Jouw bio tekst hier --></div>
+    </section>
+    <section id="photos" class="section">
+      <div class="container"><h2>Foto's</h2><!-- Jouw foto's hier --></div>
+    </section>
+    <section id="videos" class="section">
+      <div class="container"><h2>Video's</h2><!-- Jouw video's hier --></div>
+    </section>
+
+    <!-- Muziek sectie op de juiste plaats -->
     <section id="music" class="section">
         <div class="container">
             <h2>Muziek</h2>
             <p class="section-lead">Hieronder kun je onze laatste nummers beluisteren.</p>
             <div class="music-track">
                 <h4>LIZZAAR - Min Eigen Ding</h4>
-                <audio controls style="width: 100%;">
-                  <source src="assets/Audio/MinEigenDing.mp3" type="audio/mpeg">
-                  Je browser ondersteunt de audiospeler niet.
-                </audio>
+                <audio controls style="width: 100%;"><source src="assets/Audio/MinEigenDing.mp3" type="audio/mpeg"></audio>
             </div>
             <div class="music-track">
                 <h4>LIZZAAR - WienAterDaGepeisd</h4>
-                <audio controls style="width: 100%;">
-                  <source src="assets/Audio/WienAterDagepeisd.mp3" type="audio/mpeg">
-                  Je browser ondersteunt de audiospeler niet.
-                </audio>
+                <audio controls style="width: 100%;"><source src="assets/Audio/WienAterDagepeisd.mp3" type="audio/mpeg"></audio>
             </div>
         </div>
     </section>
 
-    <section id="news" class="section"><div class="container"><h2>News</h2><p>Nieuws content hier...</p></div></section>
-    <section id="booking" class="section"><div class="container"><h2>Booking</h2><p>Booking content hier...</p></div></section>
-    <section id="contact" class="section"><div class="container"><h2>Contact</h2><p>Contact content hier...</p></div></section>
+    <section id="news" class="section">
+      <div class="container"><h2>News</h2><!-- Jouw nieuws hier --></div>
+    </section>
+    <section id="booking" class="section">
+      <div class="container"><h2>Booking</h2><!-- Jouw booking info hier --></div>
+    </section>
+    <section id="contact" class="section">
+      <div class="container"><h2>Contact</h2><!-- Jouw contact info hier --></div>
+    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -85,50 +93,32 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
-  <!-- STABIEL SCRIPT DAT WERKT NADAT DE PAGINA GELADEN IS -->
+  <!-- Hersteld en vereenvoudigd script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const overlay = document.getElementById('intro-overlay');
-      const video = document.getElementById('hero-video');
-      const logo = document.getElementById('logo');
-      const content = document.getElementById('site-content');
+    const overlay = document.getElementById('intro-overlay');
+    const video = document.getElementById('hero-video');
+    const logo = document.getElementById('logo');
+    const content = document.getElementById('site-content');
 
-      function finishIntro() {
-        if (!overlay) return;
-        overlay.classList.add('hidden');
-        
-        if (logo) logo.style.display = 'block';
-        if (content) content.style.visibility = 'visible';
+    function finishIntro() {
+      if (!overlay) return;
+      overlay.classList.add('hidden');
+      if (logo) logo.style.display = 'block';
+      if (content) content.style.visibility = 'visible';
+      setTimeout(() => { overlay.style.display = 'none'; }, 500);
+    }
 
-        // Verwijder de overlay na de animatie
-        setTimeout(() => {
-          overlay.style.display = 'none';
-        }, 500);
-      }
-
-      if (video) {
-        // Start de video en wacht tot hij eindigt
-        video.play().then(() => {
-          video.addEventListener('ended', finishIntro);
-        }).catch(() => {
-          // Als autoplay faalt, verberg de intro meteen
-          finishIntro();
-        });
-        
-        // Extra failsafe timer
-        setTimeout(finishIntro, 8500);
-      } else {
-        // Als er geen video is, toon de site meteen
-        finishIntro();
-      }
-
-      const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
-    });
+    if (video) {
+      video.play().catch(finishIntro);
+      video.addEventListener('ended', finishIntro);
+      setTimeout(finishIntro, 8500);
+    } else {
+      finishIntro();
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   
+  <!-- We linken dit script nog steeds, zodat we het kunnen repareren -->
   <script src="main.js"></script>
 </body>
 </html>
