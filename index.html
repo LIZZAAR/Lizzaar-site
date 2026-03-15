@@ -12,27 +12,22 @@
     #logo { display:none; position:fixed; top:20px; left:20px; z-index:9998; }
     #logo img { width:120px; height:auto; }
     #site-content { visibility:hidden; }
-    .bg-layer { background-image: url('assets/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
+    .bg-layer { background-image: url('LIZZAAR logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
   </style>
 </head>
-<script>
-  const v = document.getElementById('hero');
-  if (v) {
- v.muted = true;
- v.play().catch(err => console.log('Autoplay failed:', err));
- v.addEventListener('playing', () => v.removeAttribute('poster'));
-  }
-  </script>
-  <body class="site-bg">
+
+<body class="site-bg">
   <div class="bg-layer" aria-hidden="true"></div>
 
   <div id="intro-overlay" aria-hidden="false">
-    <video id="hero" src="assets/Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay loop preload="auto" controls>
+    <!-- PAD GECORRIGEERD: Intro.mp4 staat in de hoofdmap -->
+    <video id="hero" src="Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay preload="auto">
     </video>
   </div>
 
   <div id="logo" aria-hidden="true">
-    <img src="assets/logo.png" alt="Lizzaar logo">
+    <!-- BESTANDSNAAM GECORRIGEERD: Het heet 'LIZZAAR logo.png' -->
+    <img src="LIZZAAR logo.png" alt="Lizzaar logo">
   </div>
 
   <a class="skip-link" href="#main">Spring naar content</a>
@@ -55,34 +50,34 @@
 
   <main id="site-content">
    <!-- =================== MUZIEK SECTIE =================== -->
-<section id="music" class="section">
-    <div class="container">
-        <h2>Muziek</h2>
-        <p class="section-lead">Hieronder kun je onze laatste nummers beluisteren.</p>
+    <section id="music" class="section">
+        <div class="container">
+            <h2>Muziek</h2>
+            <p class="section-lead">Hieronder kun je onze laatste nummers beluisteren.</p>
 
-        <!-- Speler 1: Min Eigen Ding -->
-        <div class="music-track">
-            <h4>LIZZAAR - Min Eigen Ding</h4>
-            <audio controls style="width: 100%;">
-              <source src="assets/audio/MinEigenDing.mp3" type="audio/mpeg">
-              Je browser ondersteunt de audiospeler niet.
-            </audio>
+            <!-- Speler 1: Min Eigen Ding -->
+            <div class="music-track">
+                <h4>LIZZAAR - Min Eigen Ding</h4>
+                <!-- PAD GECORRIGEERD: Hoofdletter 'A' in Audio -->
+                <audio controls style="width: 100%;">
+                  <source src="assets/Audio/MinEigenDing.mp3" type="audio/mpeg">
+                  Je browser ondersteunt de audiospeler niet.
+                </audio>
+            </div>
+
+            <!-- Speler 2: WienAterDaGepeisd -->
+            <div class="music-track">
+                <h4>LIZZAAR - WienAterDaGepeisd</h4>
+                <!-- PAD GECORRIGEERD: Hoofdletter 'A' in Audio -->
+                <audio controls style="width: 100%;">
+                  <source src="assets/Audio/WienAterDagepeisd.mp3" type="audio/mpeg">
+                  Je browser ondersteunt de audiospeler niet.
+                </audio>
+            </div>
+
         </div>
-
-        <!-- Speler 2: WienAterDaGepeisd -->
-        <div class="music-track">
-            <h4>LIZZAAR - WienAterDaGepeisd</h4>
-            <audio controls style="width: 100%;">
-              <source src="assets/audio/WienAterDagepeisd.mp3" type="audio/mpeg">
-              Je browser ondersteunt de audiospeler niet.
-            </audio>
-        </div>
-
-    </div>
-</section>
-<!-- =================== EINDE MUZIEK SECTIE =================== --> 
-
-
+    </section>
+    <!-- =================== EINDE MUZIEK SECTIE =================== --> 
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -90,51 +85,34 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
+  <!-- VOLLEDIG GECORRIGEERD SCRIPT -->
   <script>
-  (function(){
-    // DEZE REGELS WAREN VERDWENEN - ze verbinden de code met de HTML
-    const overlay = document.getElementById('intro-overlay');
-    const video = document.getElementById('intro-video');
-    const logo = document.getElementById('logo');
-    const content = document.getElementById('site-content');
+    (function(){
+      const overlay = document.getElementById('intro-overlay');
+      const video = document.getElementById('hero');
+      const logo = document.getElementById('logo');
+      const content = document.getElementById('site-content');
 
-    // Deze functie verbergt de intro en toont de website
-    function finish() {
-      overlay.style.display = 'none';
-      overlay.setAttribute('aria-hidden', 'true');
-      logo.style.display = '';
-      logo.setAttribute('aria-hidden', 'false');
-      content.style.visibility = 'visible';
-    }
+      function finish() {
+        if (overlay) overlay.style.display = 'none';
+        if (logo) logo.style.display = '';
+        if (content) content.style.visibility = 'visible';
+      }
 
-        <!-- Dit start de video en voert 'finish' uit als de video eindigt -->
-    <script>
-      (function(){
-        // DEZE REGELS ZIJN CRUCIAAL EN ONTBREKEN NU
-        const overlay = document.getElementById('intro-overlay');
-        const video = document.getElementById('hero'); // <-- Ik heb hier 'intro-video' al voor je veranderd naar 'hero'
-        const logo = document.getElementById('logo');
-        const content = document.getElementById('site-content');
-
-        // Deze functie verbergt de intro en toont de website
-        function finish() {
-          overlay.style.display = 'none';
-          overlay.setAttribute('aria-hidden', 'true');
-          logo.style.display = '';
-          logo.setAttribute('aria-hidden', 'false');
-          content.style.visibility = 'visible';
-        }
-
-        // Dit start de video en voert 'finish' uit als de video eindigt
+      if (video) {
         video.addEventListener('ended', finish);
-        setTimeout(finish, 8500); // Extra timer voor de zekerheid
-        video.play().catch(() => finish()); // Probeert af te spelen, als het mislukt, ga door
+        video.play().catch(() => finish());
+      } else {
+        finish();
+      }
+      setTimeout(finish, 8500);
+    })();
 
-      })();
-
-      // Dit update het jaartal in de footer
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
 
   <script src="main.js"></script>
 </body>
