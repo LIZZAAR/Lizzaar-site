@@ -91,26 +91,31 @@
   </footer>
 
   <script>
-    (function(){
-      const overlay = document.getElementById('intro-overlay');
-      const video = document.getElementById('intro-video');
-      const logo = document.getElementById('logo');
-      const content = document.getElementById('site-content');
+  (function(){
+    // DEZE REGELS WAREN VERDWENEN - ze verbinden de code met de HTML
+    const overlay = document.getElementById('intro-overlay');
+    const video = document.getElementById('intro-video');
+    const logo = document.getElementById('logo');
+    const content = document.getElementById('site-content');
 
-      function finish() {
-        overlay.style.display = 'none';
-        overlay.setAttribute('aria-hidden','true');
-        logo.style.display = '';
-        logo.setAttribute('aria-hidden','false');
-        content.style.visibility = 'visible';
-      }
+    // Deze functie verbergt de intro en toont de website
+    function finish() {
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+      logo.style.display = '';
+      logo.setAttribute('aria-hidden', 'false');
+      content.style.visibility = 'visible';
+    }
 
-      video.addEventListener('ended', finish);
-      setTimeout(finish, 8500);
-      video.play().catch(() => finish());
-    })();
+    // Dit start de video en voert 'finish' uit als de video eindigt
+    video.addEventListener('ended', finish);
+    setTimeout(finish, 8500); // Extra timer voor de zekerheid
+    video.play().catch(() => finish()); // Probeert af te spelen, als het mislukt, ga door
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+
+  // Dit update het jaartal in de footer
+  document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <script src="main.js"></script>
