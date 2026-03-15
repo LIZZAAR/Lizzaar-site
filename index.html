@@ -14,6 +14,8 @@
     #logo img { width:120px; height:auto; }
     #site-content { visibility:hidden; }
     .bg-layer { background-image: url('LIZZAAR logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
+    /* Stijl voor actief menu */
+    .site-nav.is-active { display: block; }
   </style>
 </head>
 
@@ -46,22 +48,12 @@
     </nav>
   </header>
 
-  <!-- We herstellen de volledige pagina-inhoud -->
   <main id="site-content">
-    <section id="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
-      <!-- Hero content (bv. groot logo of titel) kan hier -->
-    </section>
-    <section id="bio" class="section">
-      <div class="container"><h2>Bio</h2><!-- Jouw bio tekst hier --></div>
-    </section>
-    <section id="photos" class="section">
-      <div class="container"><h2>Foto's</h2><!-- Jouw foto's hier --></div>
-    </section>
-    <section id="videos" class="section">
-      <div class="container"><h2>Video's</h2><!-- Jouw video's hier --></div>
-    </section>
-
-    <!-- Muziek sectie op de juiste plaats -->
+    <section id="hero" style="min-height: 100vh;"></section>
+    <section id="bio" class="section"><div class="container"><h2>Bio</h2><p>Content voor Bio...</p></div></section>
+    <section id="photos" class="section"><div class="container"><h2>Foto's</h2><p>Content voor Foto's...</p></div></section>
+    <section id="videos" class="section"><div class="container"><h2>Video's</h2><p>Content voor Video's...</p></div></section>
+    
     <section id="music" class="section">
         <div class="container">
             <h2>Muziek</h2>
@@ -77,15 +69,9 @@
         </div>
     </section>
 
-    <section id="news" class="section">
-      <div class="container"><h2>News</h2><!-- Jouw nieuws hier --></div>
-    </section>
-    <section id="booking" class="section">
-      <div class="container"><h2>Booking</h2><!-- Jouw booking info hier --></div>
-    </section>
-    <section id="contact" class="section">
-      <div class="container"><h2>Contact</h2><!-- Jouw contact info hier --></div>
-    </section>
+    <section id="news" class="section"><div class="container"><h2>News</h2><p>Content voor News...</p></div></section>
+    <section id="booking" class="section"><div class="container"><h2>Booking</h2><p>Content voor Booking...</p></div></section>
+    <section id="contact" class="section"><div class="container"><h2>Contact</h2><p>Content voor Contact...</p></div></section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -93,7 +79,7 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
-  <!-- Hersteld en vereenvoudigd script -->
+  <!-- Script voor de intro video -->
   <script>
     const overlay = document.getElementById('intro-overlay');
     const video = document.getElementById('hero-video');
@@ -101,7 +87,7 @@
     const content = document.getElementById('site-content');
 
     function finishIntro() {
-      if (!overlay) return;
+      if (!overlay || overlay.classList.contains('hidden')) return;
       overlay.classList.add('hidden');
       if (logo) logo.style.display = 'block';
       if (content) content.style.visibility = 'visible';
@@ -111,14 +97,13 @@
     if (video) {
       video.play().catch(finishIntro);
       video.addEventListener('ended', finishIntro);
-      setTimeout(finishIntro, 8500);
+      setTimeout(finishIntro, 8500); // Failsafe
     } else {
       finishIntro();
     }
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   
-  <!-- We linken dit script nog steeds, zodat we het kunnen repareren -->
+  <!-- GEREPAREERD script voor menu en andere functies -->
   <script src="main.js"></script>
 </body>
 </html>
