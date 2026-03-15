@@ -8,29 +8,26 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     #intro-overlay { position: fixed; inset: 0; background:#000; display:flex; align-items:center; justify-content:center; z-index:9999; }
-    #intro-overlay video { width:100%; height:100%; object-fit:contain; }
+    #intro-overlay video { width:100%; height:100%; object-fit:cover; }
     #logo { display:none; position:fixed; top:20px; left:20px; z-index:9998; }
     #logo img { width:120px; height:auto; }
     #site-content { visibility:hidden; }
-    .bg-layer { background-image: url('assets/logo.png'); background-size: contain; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
-    
-  .site-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Optioneel, voor betere leesbaarheid */
-  z-index: 100;
-}</style>
+    .bg-layer { background-image: url('assets/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.08; }
+  </style>
 </head>
+<script>
+  const v = document.getElementById('hero');
+  if (v) {
+ v.muted = true;
+ v.play().catch(err => console.log('Autoplay failed:', err));
+ v.addEventListener('playing', () => v.removeAttribute('poster'));
+  }
+  </script>
   <body class="site-bg">
   <div class="bg-layer" aria-hidden="true"></div>
 
   <div id="intro-overlay" aria-hidden="false">
-    <video id="hero" src="assets/Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay preload="auto" controls>
-        
+    <video id="hero" src="assets/Intro.mp4" poster="assets/cover.jpg" playsinline muted autoplay loop preload="auto" controls>
     </video>
   </div>
 
@@ -57,7 +54,35 @@
   </header>
 
   <main id="site-content">
-    <!-- jouw secties (hero, bio, photos, videos, music, news, booking, contact) -->
+   <!-- =================== MUZIEK SECTIE =================== -->
+<section id="music" class="section">
+    <div class="container">
+        <h2>Muziek</h2>
+        <p class="section-lead">Hieronder kun je onze laatste nummers beluisteren.</p>
+
+        <!-- Speler 1: Min Eigen Ding -->
+        <div class="music-track">
+            <h4>LIZZAAR - Min Eigen Ding</h4>
+            <audio controls style="width: 100%;">
+              <source src="assets/audio/MinEigenDing.mp3" type="audio/mpeg">
+              Je browser ondersteunt de audiospeler niet.
+            </audio>
+        </div>
+
+        <!-- Speler 2: WienAterDaGepeisd -->
+        <div class="music-track">
+            <h4>LIZZAAR - WienAterDaGepeisd</h4>
+            <audio controls style="width: 100%;">
+              <source src="assets/audio/WienAterDagepeisd.mp3" type="audio/mpeg">
+              Je browser ondersteunt de audiospeler niet.
+            </audio>
+        </div>
+
+    </div>
+</section>
+<!-- =================== EINDE MUZIEK SECTIE =================== --> 
+
+
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -65,47 +90,26 @@
     <a href="privacy.html">Privacy & Cookies</a>
   </footer>
 
-
   <script>
     (function(){
-      // Elementen correct selecteren
       const overlay = document.getElementById('intro-overlay');
-      const video = document.getElementById('hero'); // <-- ID is nu correct
+      const video = document.getElementById('intro-video');
       const logo = document.getElementById('logo');
       const content = document.getElementById('site-content');
 
-      // Functie om de intro af te sluiten
-      function finishIntro() {
+      function finish() {
         overlay.style.display = 'none';
         overlay.setAttribute('aria-hidden','true');
+        logo.style.display = '';
+        logo.setAttribute('aria-hidden','false');
         content.style.visibility = 'visible';
       }
 
-      // Controleer of de video bestaat
-      if (video) {
-        // Zorg dat de video gemute is voor autoplay
-        video.muted = true;
-
-        // Koppel de 'finish' functie aan het einde van de video
-        video.addEventListener('ended', finishIntro);
-
-        // Probeer de video af te spelen
-        video.play().catch(error => {
-          console.error("Autoplay is mislukt:", error);
-          // Als afspelen niet lukt (bijv. door browser policy), sluit de intro direct
-          finishIntro();
-        });
-
-        // Fallback: als er iets misgaat, sluit de intro na 8.5 seconden
-        setTimeout(finishIntro, 8500);
-
-      } else {
-        // Als de video om een of andere reden niet gevonden wordt, sluit de intro meteen.
-        finishIntro();
-      }
+      video.addEventListener('ended', finish);
+      setTimeout(finish, 8500);
+      video.play().catch(() => finish());
     })();
 
-    // Jaartal voor de footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
