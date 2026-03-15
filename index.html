@@ -107,16 +107,34 @@
       content.style.visibility = 'visible';
     }
 
-    // Dit start de video en voert 'finish' uit als de video eindigt
-    video.addEventListener('ended', finish);
-    setTimeout(finish, 8500); // Extra timer voor de zekerheid
-    video.play().catch(() => finish()); // Probeert af te spelen, als het mislukt, ga door
+        <!-- Dit start de video en voert 'finish' uit als de video eindigt -->
+    <script>
+      (function(){
+        // DEZE REGELS ZIJN CRUCIAAL EN ONTBREKEN NU
+        const overlay = document.getElementById('intro-overlay');
+        const video = document.getElementById('hero'); // <-- Ik heb hier 'intro-video' al voor je veranderd naar 'hero'
+        const logo = document.getElementById('logo');
+        const content = document.getElementById('site-content');
 
-  })();
+        // Deze functie verbergt de intro en toont de website
+        function finish() {
+          overlay.style.display = 'none';
+          overlay.setAttribute('aria-hidden', 'true');
+          logo.style.display = '';
+          logo.setAttribute('aria-hidden', 'false');
+          content.style.visibility = 'visible';
+        }
 
-  // Dit update het jaartal in de footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+        // Dit start de video en voert 'finish' uit als de video eindigt
+        video.addEventListener('ended', finish);
+        setTimeout(finish, 8500); // Extra timer voor de zekerheid
+        video.play().catch(() => finish()); // Probeert af te spelen, als het mislukt, ga door
+
+      })();
+
+      // Dit update het jaartal in de footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
   <script src="main.js"></script>
 </body>
