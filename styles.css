@@ -53,6 +53,17 @@ body {
     border-radius: 4px;
 }
 
+/* Initially hide header and main */
+.site-header {
+    display: none;
+}
+main {
+    display: none;
+}
+.site-footer {
+    display: none;
+}
+
 /* Header en Navigatie */
 .site-header {
     position: fixed;

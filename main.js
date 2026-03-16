@@ -39,6 +39,20 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('is-active');
         });
     });
+
+    // Na afloop van intro video, toon menu en content
+    const bgVideo = document.getElementById('bg-video');
+    if (bgVideo) {
+        bgVideo.addEventListener('ended', function () {
+            bgVideo.style.display = 'none';
+            const siteHeader = document.querySelector('.site-header');
+            const main = document.querySelector('main');
+            const siteFooter = document.querySelector('.site-footer');
+            if (siteHeader) siteHeader.style.display = 'flex';
+            if (main) main.style.display = 'block';
+            if (siteFooter) siteFooter.style.display = 'block';
+        });
+    }
 });
 
 // Functie voor de muziekspeler
