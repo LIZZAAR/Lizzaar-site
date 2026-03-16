@@ -52,11 +52,20 @@ function playSong(songSrc, songTitle) {
     // Zet de bron van de audiospeler
     audioPlayer.src = songSrc;
     
-    // Laad en speel de audio
+    // Laad de audio
     audioPlayer.load();
-    audioPlayer.play().catch(() => {
-        // Autoplay kan geblokkeerd worden: de gebruiker kan dan handmatig op play klikken.
-    });
+
+    // Wacht tot de audio klaar is om te spelen
+    audioPlayer.addEventListener('canplay', () => {
+        audioPlayer.play().catch(error => {
+            alert('Fout bij afspelen: ' + error.message);
+        });
+    }, { once: true });
+
+    // Voeg error handler toe
+    audioPlayer.addEventListener('error', (e) => {
+        alert('Fout bij laden audio: ' + e.target.error?.message || 'Onbekende fout');
+    }, { once: true });
 
     // Update de 'Nu speelt' tekst
     nowPlaying.textContent = 'Nu speelt: ' + songTitle;
