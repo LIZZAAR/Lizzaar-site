@@ -1,86 +1,31 @@
-/* --- VOLLEDIGE, CORRECTE main.js --- */
-document.addEventListener('DOMContentLoaded', function () {
-    // Jaar in footer
-    const year = document.getElementById('year');
-    if (year) year.textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const trackButtons = document.querySelectorAll('.track');
+    const nowPlayingText = document.getElementById('nowPlaying');
 
-    // Menu toggle voor kleine schermen
-    const menuToggle = document.getElementById('menuToggle');
-    const siteNav = document.getElementById('siteNav');
-    if (menuToggle && siteNav) {
-        menuToggle.addEventListener('click', function () {
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', String(!expanded));
-            siteNav.style.display = expanded ? 'none' : 'block';
-        });
-    }
+    trackButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const trackSrc = button.getAttribute('data-src');
+            const trackTitle = button.innerText;
 
-    // Sluit menu op Escape
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-            if (siteNav) siteNav.style.display = 'none';
-        }
-    });
+            // 1. Update de bron van de speler
+            audioPlayer.src = trackSrc;
+            
+            // 2. Update de tekst onder de speler
+            nowPlayingText.innerText = "Nu aan het spelen: " + trackTitle;
 
-    // Playlist-knoppen instellen (speelt geselecteerde track)
-    const playlistButtons = document.querySelectorAll('#playlist button.track');
-    playlistButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const src = this.dataset.src;
-            const title = this.dataset.title || this.textContent.trim();
-            if (!src) return;
+            // 3. Start de muziek
+            audioPlayer.play();
 
-            // Speel de geselecteerde track
-            playSong(src, title);
-
-            // Activeer visuele status voor de geselecteerde knop
-            playlistButtons.forEach(b => b.classList.remove('is-active'));
-            this.classList.add('is-active');
+            // 4. Visuele feedback: highlight de actieve knop
+            trackButtons.forEach(btn => btn.style.background = "#222"); // Reset alle knoppen
+            button.style.background = "#c81a1a"; // Maak de gekozen knop rood
         });
     });
 
-    // Na afloop van intro video, toon menu en content
-    const bgVideo = document.getElementById('bg-video');
-    if (bgVideo) {
-        bgVideo.addEventListener('ended', function () {
-            bgVideo.style.display = 'none';
-            const siteHeader = document.querySelector('.site-header');
-            const main = document.querySelector('main');
-            const siteFooter = document.querySelector('.site-footer');
-            if (siteHeader) siteHeader.style.display = 'flex';
-            if (main) main.style.display = 'block';
-            if (siteFooter) siteFooter.style.display = 'block';
-        });
+    // Automatisch het jaartal in de footer updaten
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.innerText = new Date().getFullYear();
     }
 });
-
-// Functie voor de muziekspeler
-function playSong(songSrc, songTitle) {
-    const audioPlayer = document.getElementById('audioPlayer');
-    const nowPlaying = document.getElementById('nowPlaying');
-
-    if (!audioPlayer || !nowPlaying) return;
-    if (!songSrc) return;
-
-    // Zet de bron van de audiospeler
-    audioPlayer.src = songSrc;
-    
-    // Laad de audio
-    audioPlayer.load();
-
-    // Wacht tot de audio klaar is om te spelen
-    audioPlayer.addEventListener('canplay', () => {
-        audioPlayer.play().catch(error => {
-            alert('Fout bij afspelen: ' + error.message);
-        });
-    }, { once: true });
-
-    // Voeg error handler toe
-    audioPlayer.addEventListener('error', (e) => {
-        alert('Fout bij laden audio: ' + e.target.error?.message || 'Onbekende fout');
-    }, { once: true });
-
-    // Update de 'Nu speelt' tekst
-    nowPlaying.textContent = 'Nu speelt: ' + songTitle;
-}
