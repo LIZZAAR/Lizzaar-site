@@ -21,14 +21,13 @@ body {
 
 /* --- VIDEO STYLING --- */
 #bg-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
-    z-index: -100; /* Plaats achter alle andere content */
-    object-fit: contain; /* Zorgt dat de volledige video zichtbaar is, gecentreerd */
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
 }
 
 /* Skip link voor toegankelijkheid */
