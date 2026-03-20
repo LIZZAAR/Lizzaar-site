@@ -7,11 +7,7 @@
     <meta name="description" content="Ontdek LIZZAAR: het unieke solo metalproject waar West-Vlaams dialect samensmelt met brute deathcore en cinematische industrial." />
     <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="site-bg">
-
-    <video autoplay muted loop id="bg-video">
-        <source src="Intro.mp4" type="video/mp4">
-    </video>
+<body>
 
     <header class="site-header">
         <nav class="site-nav">
@@ -31,6 +27,13 @@
             <div class="hero__content">
                 <img src="LIZZAAR logo.png" alt="LIZZAAR logo" class="logo">
                 <h2 class="hero__tagline">Rauwe universele metalmuziek, West-Vlaamse zang</h2>
+                
+                <div class="video-container">
+                    <video autoplay muted loop playsinline id="intro-video">
+                        <source src="Intro.mp4" type="video/mp4">
+                    </video>
+                </div>
+
                 <div class="hero__buttons">
                     <a href="#music" class="btn">Luisteren</a>
                     <a href="#booking" class="btn">Boeken</a>
@@ -47,33 +50,32 @@
             <p>LIZZAAR is het manifeste geluid van een solo metalproject waar <strong>hardheid en tederheid</strong> elkaar ontmoeten. Geboren uit verzet en overleven, smeedt LIZZAAR duistere, bijna demonische energie samen met menselijke kwetsbaarheid tot krachtige, cinematische nummers — van <strong>ballades tot meedogenloze deathcore</strong>.</p>
 
             <h3>Het West-Vlaams als Instrument</h3>
-            <p>Centraal staat het <strong>West-Vlaams dialect</strong>: de fonetiek en ritmiek ervan worden ingezet als een extra instrument — tongbrekende klanken die tekst en melodie vormen en het dialect een muzikale dimensie inblazen zonder de universele metal-emotie te verliezen.</p>
+            <p>Centraal staat het <strong>West-Vlaams dialect</strong>: de fonetiek en ritmiek ervan worden ingezet als een extra instrument — tongbrekende klanken die tekst en melodie vormen en het dialect een nieuwe, muzikale dimensie inblazen zonder de universele metal-emotie te verliezen.</p>
             
             <h3>Live-format in opbouw</h3>
             <p>LIZZAAR breidt zich momenteel uit naar een <strong>live-format</strong>: een volledige liveband en wisselende gastmuzikanten zijn in opbouw om de intense emoties van de studio naar het podium te brengen.</p>
         </section>
+
         <section id="videos" class="section">
-            <h2 id="videosTitle">Video's</h2>
-            <div class="video-list">
-                <div class="video">
-                    <h3>LIZZAAR Logo Animation</h3>
-                    <video width="100%" height="auto" controls>
+            <h2>Video's</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <h3>Logo Animation</h3>
+                    <video width="100%" controls>
                         <source src="assets/Videos/lizzaar-logo-fire.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
-                <div class="video">
+                <div class="video-item">
                     <h3>For Face</h3>
-                    <video width="100%" height="auto" controls>
+                    <video width="100%" controls>
                         <source src="assets/Videos/for-face.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
         </section>
 
         <section id="fotos" class="section">
-            <h2 id="fotosTitle">Foto's</h2>
+            <h2>Foto's</h2>
             <div class="photo-gallery">
                 <img src="photos/concert-2024.jpg" alt="Lizzaar concert">
                 <img src="photos/studio-sessie.jpg" alt="Studio sessie">
@@ -81,31 +83,30 @@
         </section>
 
         <section id="music" class="section">
-            <h2 id="musicTitle">Muziek</h2>
+            <h2>Muziek</h2>
             <div class="player">
                 <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 1rem;"></audio>
-                <div id="playlist" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <button class="track btn" data-src="assets/Audio/WienAterDaGepeisd-demo.mp3" style="text-align: left; background: #222;">Wien Ater Dagepeisd (Demo)</button>
-                    <button class="track btn" data-src="assets/Audio/MinEigenDing.mp3" style="text-align: left; background: #222;">Min Eigen Ding</button>
-                    <button class="track btn" data-src="assets/Audio/KomMoBinn.mp3" style="text-align: left; background: #222;">Kom Mo Binn</button>
+                <div id="playlist">
+                    <button class="track btn-track" data-src="assets/Audio/WienAterDaGepeisd-demo.mp3">Wien Ater Dagepeisd (Demo)</button>
+                    <button class="track btn-track" data-src="assets/Audio/MinEigenDing.mp3">Min Eigen Ding</button>
+                    <button class="track btn-track" data-src="assets/Audio/KomMoBinn.mp3">Kom Mo Binn</button>
                 </div>
                 <p id="nowPlaying" style="margin-top: 1rem; font-style: italic; color: #888;">Selecteer een track</p>
             </div>
         </section>
 
         <section id="booking" class="section">
-            <h2 id="bookingTitle">Booking & Contact</h2>
-            <p>Voor boekingen en pers: stuur een mail naar <a href="mailto:info@lizzaar.com" style="color: var(--accent);">info@lizzaar.com</a></p>
-            <div style="margin-top: 2rem;">
+            <h2>Booking & Contact</h2>
+            <p>Mail: <a href="mailto:info@lizzaar.com" style="color: #c81a1a;">info@lizzaar.com</a></p>
+            <div style="margin-top: 1.5rem;">
                 <a href="https://www.facebook.com/profile.php?id=61581518817731" class="btn" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/lizzaar_metal_projects/" class="btn" target="_blank">Instagram</a>
             </div>
         </section>
-
-        </main>
+    </main>
 
     <footer class="site-footer">
-       <p>© <span id="year"></span> LIZZAAR — All rights reserved.</p>
+        <p>© <span id="year"></span> LIZZAAR — All rights reserved.</p>
     </footer>
 
     <script src="main.js"></script>
