@@ -12,64 +12,103 @@ body {
     background-color: var(--bg);
     color: #eee;
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
-/* --- VIDEO ALS ONDERDEEL VAN DE PAGINA (NIET BEELDVULLEND) --- */
-.video-container {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 2rem auto;
-    padding: 0 1rem;
-    text-align: center;
-}
-
-#bg-video {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    border: 1px solid #333;
-}
-
-/* Hero / Logo gedeelte */
-.hero {
-    padding: 4rem 1rem 2rem;
-    text-align: center;
-}
-
-.logo {
-    max-width: 350px;
-    width: 80%;
-    margin-bottom: 1.5rem;
-}
-
-/* Secties zoals Bio, Muziek, etc. */
-.section {
-    max-width: var(--max-width);
-    margin: 2rem auto;
-    padding: 2rem;
-    background: var(--panel);
-    border-radius: 8px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.7rem 1.5rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    margin: 0.5rem;
-}
-
-/* Navigatie bovenaan */
+/* --- NAVIGATIE --- */
 .site-header {
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid #222;
+}
+.site-nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.site-nav a { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.site-nav a:hover { color: var(--accent); }
+
+/* --- HERO / LOGO --- */
+.hero {
+    padding: 4rem 1rem 2rem;
     text-align: center;
 }
-.site-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 1rem; }
-.site-nav a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+.logo {
+    max-width: 350px;
+    width: 80%;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+.hero__tagline { font-size: 1.2rem; color: #ccc; margin-bottom: 2rem; }
+
+/* --- INTRO VIDEO CONTAINER --- */
+.video-container {
+    width: 100%;
+    max-width: 700px; /* Iets compacter voor de focus */
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+#intro-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    border: 1px solid #333;
+    display: block;
+}
+
+/* --- ALGEMENE SECTIES --- */
+.section {
+    max-width: var(--max-width);
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: var(--panel);
+    border-radius: 8px;
+    border: 1px solid #222;
+}
+.section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-top: 0; }
+
+/* --- MUZIEKSPELER --- */
+.btn-track {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    background: #111;
+    color: #eee;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-track:hover { background: #222; border-color: var(--accent); }
+
+/* --- VIDEO GRID & FOTO'S --- */
+.video-grid, .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.video-item video, .photo-gallery img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+/* --- KNOOPPEN --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
+
+/* --- FOOTER --- */
+.site-footer { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 0.8rem; }
