@@ -97,6 +97,24 @@ body {
     border: 1px solid #333;
 }
 
+.photo-map {
+    width: 100%;
+    height: 420px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.map-popup img {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+}
+
 /* --- KNOOPPEN --- */
 .btn {
     display: inline-block;

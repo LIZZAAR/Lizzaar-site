@@ -6,6 +6,12 @@
     <title>LIZZAAR | Rauwe universele metalmuziek, West-Vlaamse zang</title>
     <meta name="description" content="Ontdek LIZZAAR: het unieke solo metalproject waar West-Vlaams dialect samensmelt met brute deathcore en cinematische industrial." />
     <link rel="stylesheet" href="styles.css" />
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
      <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -21,7 +27,7 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#bio">Bio</a></li>
                 <li><a href="#videos">Video's</a></li>
-                <li><a href="#fotos">Foto's</a></li>
+                <li><a href="#photos">Foto's</a></li>
                 <li><a href="#music">Muziek</a></li>
                 <li><a href="#booking">Booking</a></li>
             </ul>
@@ -71,20 +77,17 @@
                         <source src="assets/Videos/lizzaar-logo-fire.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="video-item">
-                    <h3>For Face</h3>
-                    <video width="100%" controls>
-                        <source src="assets/Videos/for-face.mp4" type="video/mp4">
-                    </video>
-                </div>
             </div>
         </section>
 
-        <section id="fotos" class="section">
-            <h2>Foto's</h2>
+        <section id="photos" class="section">
+            <h2>photos</h2>
+            <div id="photo-map" class="photo-map" aria-label="Kaart met foto locaties"></div>
             <div class="photo-gallery">
-                <img src="photos/concert-2024.jpg" alt="Lizzaar concert">
-                <img src="photos/studio-sessie.jpg" alt="Studio sessie">
+                <img src="photos/Homestudio2.jpeg" alt="Lizzaar homestudio">
+                <img src="photos/homestudio3.jpeg" alt="Lizzaar homestudio sfeer">
+                <img src="photos/record.jpeg" alt="Lizzaar opname moment">
+                <img src="photos/repetitiekot.jpeg" alt="Lizzaar repetitiekot">
             </div>
         </section>
 
@@ -115,6 +118,11 @@
         <p>© <span id="year"></span> LIZZAAR — All rights reserved.</p>
     </footer>
 
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
     <script src="main.js"></script>
 </body>
 </html>
