@@ -2,28 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoLocations = [
         {
             title: 'Homestudio',
-            src: 'photos/Homestudio2.jpeg',
+            src: 'photos/lizzaar-logo-dialect-metal.png',
             alt: 'Lizzaar homestudio',
             lat: 50.9302,
             lng: 3.1226,
         },
         {
             title: 'Homestudio sfeer',
-            src: 'photos/homestudio3.jpeg',
+            src: 'photos/lizzaar-portrait-bliksem.png',
             alt: 'Lizzaar homestudio sfeer',
             lat: 50.9314,
             lng: 3.1285,
         },
         {
             title: 'Recording',
-            src: 'photos/record.jpeg',
+            src: 'photos/lizzaar-drone-shoot-bos.jpg',
             alt: 'Lizzaar opname moment',
             lat: 51.0314,
             lng: 3.7067,
         },
         {
             title: 'Repetitiekot',
-            src: 'photos/repetitiekot.jpeg',
+            src: 'photos/lizzaar-fb-banner-drone.jpeg',
             alt: 'Lizzaar repetitiekot',
             lat: 50.8607,
             lng: 4.3517,
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const popupHtml = `
                 <div class="map-popup">
                     <strong>${location.title}</strong>
-                    <img src="${location.src}" alt="${location.alt}" loading="lazy" />
+                    <img src="${location.src}" alt="${location.alt}" loading="lazy" onerror="this.src='assets/lizzaar-logo-transparant.png'; this.onerror=null;" />
                 </div>
             `;
 
@@ -52,8 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const audioPlayer = document.getElementById('audioPlayer');
+    const audioFallback = document.getElementById('audioFallback');
     const trackButtons = document.querySelectorAll('.track');
     const nowPlayingText = document.getElementById('nowPlaying');
+
+    if (audioPlayer) {
+        audioPlayer.addEventListener('error', () => {
+            audioPlayer.style.display = 'none';
+            if (audioFallback) {
+                audioFallback.hidden = false;
+                audioFallback.textContent = 'Audio is momenteel niet beschikbaar.';
+            }
+        });
+    }
+
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('error', () => {
+            const fallback = video.nextElementSibling;
+            if (fallback && fallback.classList.contains('media-fallback')) {
+                fallback.hidden = false;
+                fallback.textContent = 'Deze video is momenteel niet beschikbaar.';
+                video.style.display = 'none';
+            }
+        });
+    });
 
     trackButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -61,21 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const trackTitle = button.innerText;
             const cacheBustedSrc = `${trackSrc}${trackSrc.includes('?') ? '&' : '?'}v=${Date.now()}`;
 
-            // 1. Update de bron van de speler en forceer een reload om cache te vermijden
-            audioPlayer.src = cacheBustedSrc;
-            audioPlayer.load();
+            if (audioPlayer) {
+                audioPlayer.style.display = 'block';
+                audioPlayer.src = cacheBustedSrc;
+                audioPlayer.load();
+            }
 
-            // 2. Update de tekst onder de speler
             nowPlayingText.innerText = "Nu aan het spelen: " + trackTitle;
 
-            // 3. Start de muziek
-            audioPlayer.play().catch(() => {
-                console.warn('Autoplay werd geblokkeerd door de browser.');
-            });
+            if (audioPlayer) {
+                audioPlayer.play().catch(() => {
+                    console.warn('Autoplay werd geblokkeerd door de browser.');
+                });
+            }
 
-            // 4. Visuele feedback: highlight de actieve knop
-            trackButtons.forEach(btn => btn.style.background = "#222"); // Reset alle knoppen
-            button.style.background = "#c81a1a"; // Maak de gekozen knop rood
+            trackButtons.forEach(btn => btn.style.background = "#222");
+            button.style.background = "#c81a1a";
         });
     });
 
