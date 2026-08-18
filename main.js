@@ -59,15 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const trackSrc = button.getAttribute('data-src');
             const trackTitle = button.innerText;
+            const cacheBustedSrc = `${trackSrc}${trackSrc.includes('?') ? '&' : '?'}v=${Date.now()}`;
 
-            // 1. Update de bron van de speler
-            audioPlayer.src = trackSrc;
-            
+            // 1. Update de bron van de speler en forceer een reload om cache te vermijden
+            audioPlayer.src = cacheBustedSrc;
+            audioPlayer.load();
+
             // 2. Update de tekst onder de speler
             nowPlayingText.innerText = "Nu aan het spelen: " + trackTitle;
 
             // 3. Start de muziek
-            audioPlayer.play();
+            audioPlayer.play().catch(() => {
+                console.warn('Autoplay werd geblokkeerd door de browser.');
+            });
 
             // 4. Visuele feedback: highlight de actieve knop
             trackButtons.forEach(btn => btn.style.background = "#222"); // Reset alle knoppen
